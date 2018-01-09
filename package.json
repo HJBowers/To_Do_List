@@ -12,7 +12,7 @@
     "test": "mocha --require babel-core/register test/**/*.test.js",
     "lint": "./node_modules/.bin/eslint src",
     "build": "rimraf src/ && babel ./ --out-dir src/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
-    "start": "npm run build && nodemon src/index.js"
+    "start": "nodemon src/index.js"
   },
   "license": "MIT",
   "dependencies": {
