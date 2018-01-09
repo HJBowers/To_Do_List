@@ -23,15 +23,27 @@ A simple to-do list app where users can store their tasks in a database, see the
 
 ## Implementation Plan
 [ToDo List](https://curriculum.learnersguild.org/Phases/Practice/Modules/To-Do-List/):
+- Views
   - [ ] Create front end:
     - [ ] Implement jQuery, and vanilla JavaScript
     - [ ] Use scripts to manipulation DOM
     - [ ] Task order can be changed using jQuery
-  - [ ] Implement `express-session` for user data:
+  - [ ] Implement `express-session` for user data
+- Database
   - [ ] Create schemas:
     - [ ] Create `users` table using `express-session`
     - [ ] Create `tasks` table with `id`, `completed`, `task`, `list` columns'
     - [ ] Create `lists` table with `id` & `username` columns
+  - [ ] Queries
+    - [ ] Create list
+    - [ ] Create tasks
+    - [ ] Find user by email
+    - [ ] Get all lists
+    - [ ] Get list by user ID
+    - [ ] Get task by list ID
+    - [ ] Sign up
+
+- AJAX
   - [ ] Create AJAX calls for `lists`:
     - [ ] POST `create`
     - [ ] DELETE `delete`
@@ -40,6 +52,8 @@ A simple to-do list app where users can store their tasks in a database, see the
     - [ ] DELETE `delete`
     - [ ] PUT `update`
     - [ ] POST `completed` route (binary)
+
+- Routes
   - [ ] Create users routes
     - [ ] POST `/signin`
     - [ ] POST `/signup`
@@ -52,7 +66,8 @@ A simple to-do list app where users can store their tasks in a database, see the
     - [ ] DELETE`/list/task/delete`
     - [ ] PUT `/list/task/update`
     - [ ] PUT `/list/task/completed` route (binary)
-  - [ ] Errors displayed using `alert()`
+
+- Testing
   - [ ] Testing `tasks`:
     - [ ] Creating to do list items
     - [ ] Deleting to do list items
@@ -65,4 +80,6 @@ A simple to-do list app where users can store their tasks in a database, see the
     - [ ] Completing list
     - [ ] Editing list
     - [ ] All tests are passing
+
   - [ ] Deploy site on heroku
+  - [ ] Errors displayed using `alert()`
