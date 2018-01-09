@@ -33,24 +33,25 @@ A simple to-do list app where users can store their tasks in a database, see the
     - [ ] Create `tasks` table with `id`, `completed`, `task`, `list` columns'
     - [ ] Create `lists` table with `id` & `username` columns
   - [ ] Create AJAX calls for `lists`:
-    - [ ] `create`
-    - [ ] `delete`
+    - [ ] POST `create`
+    - [ ] DELETE `delete`
   - [ ] Create AJAX calls for `tasks`:
-    - [ ] `create`
-    - [ ] `delete`
-    - [ ] `update`
-    - [ ] `completed` route (binary)
+    - [ ] POST `create`
+    - [ ] DELETE `delete`
+    - [ ] PUT `update`
+    - [ ] POST `completed` route (binary)
   - [ ] Create users routes
-    - [ ] `/signin`
-    - [ ] `/signup`
+    - [ ] POST `/signin`
+    - [ ] POST `/signup`
   - [ ] Create lists routes
-    - [ ] `/list/create`
-    - [ ] `/list/delete`
+    - [ ] GET `lists`
+    - [ ] POST `/list/create`
+    - [ ] DELETE `/list/delete`
   - [ ] Create tasks routes
-    - [ ] `/list/task/create`
-    - [ ] `/list/task/delete`
-    - [ ] `/list/task/update`
-    - [ ] `/list/task/completed` route (binary)
+    - [ ] POST `/list/task/create`
+    - [ ] DELETE`/list/task/delete`
+    - [ ] PUT `/list/task/update`
+    - [ ] PUT `/list/task/completed` route (binary)
   - [ ] Errors displayed using `alert()`
   - [ ] Testing `tasks`:
     - [ ] Creating to do list items
