@@ -31,9 +31,10 @@ A simple to-do list app where users can store their tasks in a database, see the
   - [ ] Implement `express-session` for user data
 - Database
   - [ ] Create schemas:
-    - [ ] Create `users` table using `express-session`
-    - [ ] Create `tasks` table with `id`, `completed`, `task`, `list` columns'
-    - [ ] Create `lists` table with `id` & `username` columns
+    - [ ] Create `session` table using `express-session`
+    - [x] Create `users` table using `id`, `name`, `email`, & `password` columns
+    - [x] Create `lists` table with `id`, `title`, & `username` columns
+    - [x] Create `tasks` table with `id`, `completed`, `task`, `list` columns'
   - [ ] Queries
     - [ ] Create list
     - [ ] Create tasks

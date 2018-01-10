@@ -12,7 +12,7 @@
     "test": "mocha --require babel-core/register test/**/*.test.js",
     "lint": "./node_modules/.bin/eslint src",
     "build": "rimraf src/ && babel ./ --out-dir src/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js --exec babel-node --presets es2015,stage-2"
   },
   "license": "MIT",
   "dependencies": {
@@ -28,6 +28,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "chai": "^4.1.2",
     "eslint": "^4.15.0",
     "eslint-config-airbnb-base": "^12.1.0",
