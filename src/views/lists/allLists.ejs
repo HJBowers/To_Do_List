@@ -3,14 +3,7 @@
 <div id="user-lists">
   <% lists.forEach(list => { %>
     <div class="listTitle">
-      <h1><%- list.title %> List:</h1>
-    </div>
-    <div class="tasks">
-      <h2>Tasks:</h2>
-        <% tasks_in_list.forEach(list => { %>
-          <div class="task-list">
-          </div>
-        <% }) %>
+      <h1><a href="http://localhost:3000/lists/<%- list.id %>" ><%- list.title %> List:</a></h1>
     </div>
   <% }) %>
 </div>
