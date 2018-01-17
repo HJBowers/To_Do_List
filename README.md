@@ -39,9 +39,9 @@ A simple to-do list app where users can store their tasks in a database, see the
     - [ ] Create list
     - [ ] Create tasks
     - [ ] Find user by email
-    - [ ] Get all lists
+    - [x] Get all lists
     - [ ] Get list by user ID
-    - [ ] Get task by list ID
+    - [x] Get tasks by list ID
     - [ ] Sign up
 
 - AJAX
@@ -59,10 +59,11 @@ A simple to-do list app where users can store their tasks in a database, see the
     - [ ] POST `/signin`
     - [ ] POST `/signup`
   - [ ] Create lists routes
-    - [ ] GET `lists`
+    - [x] GET `lists`
     - [ ] POST `/list/create`
     - [ ] DELETE `/list/delete`
   - [ ] Create tasks routes
+    - [x] GET `lists/:listId`
     - [ ] POST `/list/task/create`
     - [ ] DELETE`/list/task/delete`
     - [ ] PUT `/list/task/update`
