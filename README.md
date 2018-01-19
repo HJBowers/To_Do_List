@@ -25,8 +25,8 @@ A simple to-do list app where users can store their tasks in a database, see the
 [ToDo List](https://curriculum.learnersguild.org/Phases/Practice/Modules/To-Do-List/):
 - Views
   - [ ] Create front end:
-    - [ ] Implement jQuery, and vanilla JavaScript
-    - [ ] Use scripts to manipulation DOM
+    - [x] Implement jQuery, and vanilla JavaScript
+    - [x] Use scripts to manipulation DOM
     - [ ] Task order can be changed using jQuery
   - [ ] Implement `express-session` for user data
 - Database
@@ -37,7 +37,7 @@ A simple to-do list app where users can store their tasks in a database, see the
     - [x] Create `tasks` table with `id`, `completed`, `task`, `list` columns'
   - [ ] Queries
     - [ ] Create list
-    - [ ] Create tasks
+    - [x] Create tasks
     - [ ] Find user by email
     - [x] Get all lists
     - [ ] Get list by user ID
@@ -49,7 +49,7 @@ A simple to-do list app where users can store their tasks in a database, see the
     - [ ] POST `create`
     - [ ] DELETE `delete`
   - [ ] Create AJAX calls for `tasks`:
-    - [ ] POST `create`
+    - [x] POST `create`
     - [ ] DELETE `delete`
     - [ ] PUT `update`
     - [ ] POST `completed` route (binary)
@@ -64,7 +64,7 @@ A simple to-do list app where users can store their tasks in a database, see the
     - [ ] DELETE `/list/delete`
   - [ ] Create tasks routes
     - [x] GET `lists/:listId`
-    - [ ] POST `/list/task/create`
+    - [x] POST `/list/addTask`
     - [ ] DELETE`/list/task/delete`
     - [ ] PUT `/list/task/update`
     - [ ] PUT `/list/task/completed` route (binary)
