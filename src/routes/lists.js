@@ -25,15 +25,15 @@ router.get('/:list_id', (req, res, next) => {
 })
 
 router.post('/addTask', (req, res, next) => {
-  console.log("POST Route");
   const {newTask, listId} = req.body
-  console.log("newTask Route ===>", newTask);
-  console.log("listId Route ===>", listId);
 
   createTask(newTask, listId)
-  .then(tasks => {
-    console.log("updated Tasks ===> ", tasks);
-    res.render('lists/list', {tasks})
+  .then(() => {
+    res.json({status: "Success"})
+  })
+  .catch(error => {
+    console.error(error)
+    res.json({status: "Error"})
   })
 })
 
