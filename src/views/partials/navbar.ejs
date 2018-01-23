@@ -16,14 +16,16 @@
         <li class="nav-item active">
           <a class="nav-link" id="logout-link" href="/logout">Log Out</a>
         </li>
-      <% } else if(signinLink === false) { %>
-        <li class="nav-item active">
-          <a class="nav-link" id="signin-link" href="/signin">Sign In</a>
-        </li>
-      <% } else if(signupLink === false) { %>
-        <li class="nav-item active">
-          <a class="nav-link" id="signup-link" href="/signup">Sign Up</a>
-        </li>
+      <% } else { %>
+        <% if(signinLink === false) { %>
+          <li class="nav-item active">
+            <a class="nav-link" id="signin-link" href="/signin">Sign In</a>
+          </li>
+        <% } else if(signupLink === false) { %>
+          <li class="nav-item active">
+            <a class="nav-link" id="signup-link" href="/signup">Sign Up</a>
+          </li>
+        <% } %>
       <% } %>
     </ul>
 
