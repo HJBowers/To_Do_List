@@ -1,9 +1,12 @@
 import express from 'express'
-
+import { findUserByEmail, signin, signup } from "../actions"
 const router = express.Router()
 
 router.get('/signin', (req, res, next) => {
-  res.render('authentication/signin', {message: ""})
+  const {user} = req.session
+  const signup = true
+  const signin = false
+  res.render('authentication/signin', {message: "", user, signin, signup})
 })
 
 router.post('/signin', (req, res, next) => {
@@ -28,7 +31,10 @@ router.post('/signin', (req, res, next) => {
 
 
 router.get('/signup', (req, res, next) => {
-  res.render('authentication/signup', {message: ""})
+  const {user} = req.session
+  const signup = false
+  const signin = true
+  res.render('authentication/signup', {message: "", user, signin, signup})
 })
 
 router.post('/signup', (req, res, next) => {

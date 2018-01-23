@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get('/', (req, res, next) => {
   if(!req.session.user){
-    res.redirect("/signup")
+    res.redirect("/signin")
   } else {
     getAllLists()
     .then( lists => {
