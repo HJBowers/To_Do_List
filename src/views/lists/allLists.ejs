@@ -1,9 +1,10 @@
 <% include ../partials/header %>
 
 <div id="user-lists">
+  <h1>List of Lists:<h1>
   <% lists.forEach(list => { %>
     <div class="listTitle">
-      <h1><a href="http://localhost:3000/lists/<%- list.id %>" ><%- list.title %> List:</a></h1>
+      <h5><a href="http://localhost:3000/lists/<%- list.id %>" ><%- list.title %> List</a></h5>
     </div>
   <% }) %>
 </div>
