@@ -3,10 +3,7 @@ import { findUserByEmail, signin, signup } from "../actions"
 const router = express.Router()
 
 router.get('/signin', (req, res, next) => {
-  const {user} = req.session
-  const signup = true
-  const signin = false
-  res.render('authentication/signin', {message: "", user, signin, signup})
+  res.render('authentication/signin', {message: "", user: req.session.user, signinLink: true, signupLink: false})
 })
 
 router.post('/signin', (req, res, next) => {
@@ -14,27 +11,24 @@ router.post('/signin', (req, res, next) => {
 
   findUserByEmail(email)
   .then(existingUser => {
+    console.log("existingUser", existingUser);
     if(!existingUser) {
-      res.render('authentication/signin', {message: "Account does not exist, please <a href='localhost:3000/signup' >sign up</a>"})
+      res.render('authentication/signin', {message: "Account does not exist, please <a href='localhost:3000/signup' >sign up</a>", user: req.session.user, signinLink: true, signupLink: false})
     } else {
       signin(email, password)
       .then(message => {
         if(message === "success") {
           res.redirect('/')
         } else {
-          res.render('authentication/signin', {message: "Email or password incorrect"})
+          res.render('authentication/signin', {message: "Email or password incorrect", user: req.session.user, signinLink: true, signupLink: false})
         }
       })
     }
   })
 })
 
-
 router.get('/signup', (req, res, next) => {
-  const {user} = req.session
-  const signup = false
-  const signin = true
-  res.render('authentication/signup', {message: "", user, signin, signup})
+  res.render('authentication/signup', {message: "", user: req.session.user, signinLink: false, signupLink: true})
 })
 
 router.post('/signup', (req, res, next) => {
@@ -49,11 +43,10 @@ router.post('/signup', (req, res, next) => {
         res.redirect('/')
       })
     } else {
-      res.render('authentication/signup', {message: "Email already exists"})
+      res.render('authentication/signup', {message: "Email already exists, please <a href='localhost:3000/signin' >sign in</a>", user: req.session.user, signinLink: false, signupLink: true})
     }
   })
 })
-
 
 router.get('/logout', (req, res, next) => {
   req.session.destroy()
