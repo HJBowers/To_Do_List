@@ -5,11 +5,14 @@ import { getAllLists, getTasksByListId, getList, createTask } from '../actions'
 const router = express.Router()
 
 router.get('/', (req, res, next) => {
-  getAllLists()
-  .then( lists => {
-    console.log("Lists ===> ", lists);
-    res.render('lists/allLists', {lists})
-  })
+  if(!req.session.user){
+    res.redirect("/signup")
+  } else {
+    getAllLists()
+    .then( lists => {
+      res.render('lists/allLists', {lists})
+    })
+  }
 })
 
 router.get('/:list_id', (req, res, next) => {
