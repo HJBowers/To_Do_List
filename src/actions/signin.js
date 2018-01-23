@@ -7,6 +7,13 @@ export default function signin (email, password) {
     FROM
       users
     WHERE
-      (email=$1, password=$2)
-  `[email, password])
+      (email=$1)
+  `, [email])
+  .then(user => {
+    if(user.password === password) {
+      return {user, message: "success"}
+    } else {
+      return {message: "fail"}
+    }
+  })
 }

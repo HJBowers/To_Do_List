@@ -2,7 +2,7 @@ const saveNewTask = function(event) {
   const newTask = document.getElementById('newTask').value
   const listId = document.getElementById('listId').value
 
-  fetch('/lists/addTask', {
+  fetch('/addTask', {
     method: 'POST',
     body: JSON.stringify({ newTask, listId }),
     headers: new Headers({
