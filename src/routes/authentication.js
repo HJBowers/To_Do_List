@@ -11,15 +11,15 @@ router.post('/signin', (req, res, next) => {
 
   findUserByEmail(email)
   .then(existingUser => {
-    console.log("existingUser", existingUser);
     if(!existingUser) {
       res.render('authentication/signin', {message: "Account does not exist, please <a href='localhost:3000/signup' >sign up</a>", user: req.session.user, signinLink: true, signupLink: false})
     } else {
       signin(email, password)
-      .then(message => {
-        if(message === "success") {
+      .then(results => {
+        if(results.message === "success") {
+          req.session.user = results.user
           res.redirect('/')
-        } else {
+        } else if(results.message === "fail") {
           res.render('authentication/signin', {message: "Email or password incorrect", user: req.session.user, signinLink: true, signupLink: false})
         }
       })
