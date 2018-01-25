@@ -28,11 +28,6 @@ function saveNewTask(event) {
 
 const taskBtn = document.getElementById("addNewTask")
 
-// taskBtn.addEventListener('click', function(event) {
-//   saveNewTask(event)
-//   taskBtn.removeEventListener('click', saveNewTask, false)
-// })
-
 if(taskBtn){
 	taskBtn.onclick = function(){
 		saveNewTask(event)
@@ -45,9 +40,8 @@ if(taskBtn){
 
 // ********************** Create New List **********************
 function saveNewList(event) {
-  const title = document.getElementById('newList').value
-  const userId = document.getElementById('userId').value
-  
+  const title = document.getElementById('newListTitle').value
+
   fetch('/lists/createList', {
     method: 'POST',
     body: JSON.stringify({title}),
@@ -61,8 +55,8 @@ function saveNewList(event) {
   })
   .then( (response) => {
     if(response.status === 'success') {
-      $('#lists').append(`<h5><a href="http://localhost:3000/lists/${list.id}" >${title} List</a></h5>`)
-      $('input[name=newList]').val('')
+      $('#lists').append(`<h5><a href="http://localhost:3000/lists/${response.newList.id}" >${title} List</a></h5>`)
+      $('input[name=newListTitle]').val('')
     } else {
       console.log("Error Hit!")
       $('#user-list').append(`<div><p>There has been an ${response.statust}, list has not been created.</p></div>`)
@@ -73,18 +67,13 @@ function saveNewList(event) {
 
 var listBtn = document.getElementById('addNewList')
 
-listBtn.addEventListener('click', function(event) {
-  saveNewList(event)
-  listBtn.removeEventListener('click', saveNewList, false)
-})
-
-// if(listBtn){
-// 	listBtn.onclick = function(){
-// 		saveNewList(event)
-// 	}
-//   listBtn.addEventListener('click', saveNewList);
-//   listBtn.removeEventListener('click', saveNewList)
-// }
+if(listBtn){
+	listBtn.onclick = function(){
+		saveNewList(event)
+	}
+  listBtn.addEventListener('click', saveNewList);
+  listBtn.removeEventListener('click', saveNewList)
+}
 
 
 /*
