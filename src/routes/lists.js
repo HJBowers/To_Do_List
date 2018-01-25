@@ -17,8 +17,8 @@ router.post('/createList', (req, res, next) => {
   const {title} = req.body
 
   createList(title, user_id)
-  .then( () => {
-    res.json({status: "success"})
+  .then( (newList) => {
+    res.json({status: "success", newList})
   })
   .catch(error => {
     console.error("CreateList Route: ",error)
