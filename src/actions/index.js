@@ -1,4 +1,4 @@
-// export {default as createList} from './createList'
+export {default as createList} from './createList'
 export {default as createTask} from './createTask'
 export {default as findUserByEmail} from './findUserByEmail'
 export {default as getAllLists} from './getAllLists'
