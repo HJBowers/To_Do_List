@@ -14,8 +14,8 @@ routes.get('/', (req, res) => {
 
 routes.use('/', auth)
 routes.use(isLoggedIn)
-routes.use('/lists', lists)
 routes.use('/', tasks)
+routes.use('/lists', lists)
 routes.use('/users', users)
 
 export default routes
