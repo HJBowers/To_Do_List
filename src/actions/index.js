@@ -1,5 +1,6 @@
 export {default as createList} from './createList'
 export {default as createTask} from './createTask'
+export {default as deleteTask} from './deleteTask'
 export {default as findUserByEmail} from './findUserByEmail'
 export {default as getAllLists} from './getAllLists'
 export {default as getList} from './getList'
