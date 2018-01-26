@@ -7,7 +7,8 @@
       <h2>Tasks:</h2>
       <% tasks.forEach( task => { %>
         <div class="task-list">
-          <h3><%- task.task %></h3>
+          <h3 class="task" data-id="<%= task.id %>"><%- task.task %></h3>
+          <button class="deleteTaskBtn" data-id="<%= task.id %>" >Delete Task</button>
         </div>
       <% }) %>
     </div>
