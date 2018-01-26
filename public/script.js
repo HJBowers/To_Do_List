@@ -37,7 +37,6 @@ if(taskBtn){
 }
 
 
-
 // ********************** Create New List **********************
 function saveNewList(event) {
   const title = document.getElementById('newListTitle').value
@@ -74,6 +73,35 @@ if(listBtn){
   listBtn.addEventListener('click', saveNewList);
   listBtn.removeEventListener('click', saveNewList)
 }
+
+
+// ********************** Delete Task **********************
+$(document).ready(function(){
+  $(document).on('click', '.deleteTaskBtn', function() {
+    var id = $(this).data('id')
+
+    fetch('/deleteTask/' + id, {
+      method: 'DELETE',
+      credentials: "include"
+    })
+    .then( res => {
+      return res.json()
+    })
+    .then( (response) => {
+      if(response.status === 'success') {
+        $('.task').filter('[data-id='+id+']').remove()
+        $('.deleteTaskBtn').filter('[data-id='+id+']').remove()
+      } else {
+        console.log("Error Hit!")
+        $('#user-list').append(`<div><p>There has been an ${response.statust}, list has not been created.</p></div>`)
+      }
+    })
+    .catch(error => console.error('Error:', error))
+  })
+})
+
+
+// ********************** Delete List **********************
 
 
 /*
