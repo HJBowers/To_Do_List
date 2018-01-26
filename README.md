@@ -5,22 +5,25 @@ A simple to-do list app where users can store their tasks in a database, see the
 
 ## Specifications
 [ToDo List](https://curriculum.learnersguild.org/Phases/Practice/Modules/To-Do-List/):
+  - [x] Backend uses Node.js and Express.
+  - [x] App persists tasks in a database.
   - [x] Users can sign in/out.
   - [x] Users cannot access any pages without signing in first.
+  - [x] Going to the Home Page (http://localhost:3000/) should let you see all the lists
+  - [x] Going to a list detail page should show all the tasks for that list
   - [x] Users can create lists without page refresh.
-  - [x] Navbar shows signin on the signup page, and visa versa.
-  - [x] Navbar shows logout when user has signed in.
+  - [ ] Adding a list should add a new list in the database, and redirect to the created list
   - [ ] Users can delete unwanted lists without page refresh.
+  - [ ] Clicking on the Delete button for a list should delete the list without refreshing the page
   - [x] Users can create tasks without page refresh.
-  - [ ] Users can delete unwanted tasks without page refresh.
+  - [x] Users can delete unwanted tasks without page refresh.
   - [ ] Users can edit the text on existing tasks without page refresh.
   - [ ] Users can check tasks off as completed without page refresh.
   - [ ] UI renders tasks differently when they are completed (using a checkbox or some other indicator).
   - [ ] User can change the order that tasks are listed.
-  - [ ] When an error occurs, the user is notified with an alert message.
-  - [x] Backend uses Node.js and Express.
-  - [x] App persists tasks in a database.
-  - [ ] App has been deployed.
+  - [ ] Searching should show all the lists and tasks which match the search string
+  - [x] Navbar shows signin on the signup page, and visa versa.
+  - [x] Navbar shows logout when user has signed in.  
 
 ## Implementation Plan
 [ToDo List](https://curriculum.learnersguild.org/Phases/Practice/Modules/To-Do-List/):
@@ -50,6 +53,7 @@ A simple to-do list app where users can store their tasks in a database, see the
     - [x] Get tasks by list ID
     - [x] Sign up
     - [x] Sign in
+    - [x] Search
 
 - AJAX
   - [ ] Create AJAX calls for `lists`:
@@ -57,10 +61,12 @@ A simple to-do list app where users can store their tasks in a database, see the
     - [ ] DELETE `delete`
   - [ ] Create AJAX calls for `tasks`:
     - [x] POST `create`
-    - [ ] DELETE `delete`
+    - [x] DELETE `delete`
     - [ ] PUT `update`
   - [ ] Create AJAX calls for `users`:
     - [ ] PUT `update`
+  - [ ] Create AJAX calls for `search`:
+    - [ ] GET `search`
 
 - Routes
   - [x] Implement `express-session` for user data
@@ -77,8 +83,10 @@ A simple to-do list app where users can store their tasks in a database, see the
   - [ ] Create tasks routes
     - [x] GET `lists/:listId`
     - [x] POST `/list/addTask`
-    - [ ] DELETE`/list/task/delete`
+    - [x] DELETE`/list/task/delete`
     - [ ] PUT `/list/task/update` (order, completion, edit)
+  - [ ] Search
+    - [ ] GET `/list/search`
 
 - Testing
   - [ ] Testing `tasks`:
