@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "db:create": "createdb to_do_list",
-    "db:drop": "dropdb to_do_list",
+    "db:drop": "dropdb --if-exists to_do_list",
     "db:schema": "psql -d to_do_list < src/data/schema.sql",
     "db:seed": "psql -d to_do_list < src/data/seed.sql",
     "db:reset": "npm run db:drop; npm run db:create; npm run db:schema; npm run db:seed;",
