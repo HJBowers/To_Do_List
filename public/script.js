@@ -1,99 +1,85 @@
-// ********************** Create New Task **********************
-function saveNewTask(event) {
-  const newTask = document.getElementById('newTask').value
-  const listId = document.getElementById('listId').value
+$(document).ready(function(){
 
-  fetch('/addTask', {
-    method: 'POST',
-    body: JSON.stringify({newTask, listId}),
-    headers: new Headers({
-      'Content-Type': 'application/json'
-    }),
-    credentials: "include"
-  })
-  .then( res => {
-    return res.json()
-  })
-  .then( (response) => {
-    if(response.status === "Success") {
-      $('.tasks').append(`<h3>${newTask}</h3>`)
-      $('input[name=newTask]').val('')
-    } else {
-      console.log("Error Hit!");
-      $('.container').append(`<div><p>There has been an error, task has not been added.</p></div>`)
-    }
-  })
-  .catch(error => console.error('Error:', error))
-}
+  const jsonHeaders = new Headers({'Content-Type': 'application/json'})
+  const taskBtn = $('#addNewTask')
+  const listBtn = $('#addNewList')
 
-const taskBtn = document.getElementById("addNewTask")
+  // ********************** Create New Task **********************
+  function saveNewTask() {
+    const funcDesc = 'save new task'
+    const newTask = $('#newTask').val()
+    const listId = $('#listId').val()
 
-if(taskBtn){
-	taskBtn.onclick = function(){
-		saveNewTask(event)
-	}
-  taskBtn.addEventListener('click', saveNewTask);
-  taskBtn.removeEventListener('click', saveNewTask)
-}
+    fetch('/addTask', {
+      method: 'POST',
+      body: JSON.stringify({newTask, listId}),
+      headers: jsonHeaders,
+      credentials: 'include'
+    })
+    .then( res => res.json() )
+    .then((response) => {
+      if(response.status === 'Success') {
+        $('#tasks').append(`<h3>${newTask}</h3>`)
+        $('input[name=newTask]').val('')
+      } else {
+        console.log('Error Hit!', funcDesc);
+        $('.container').append(`<div><p>There has been an error, task has not been added.</p></div>`)
+      }
+    })
+    .catch(error => console.error(funcDesc, 'Error: ', error))
+  }
+
+  // event handler
+  if(taskBtn) {
+    taskBtn.onclick = saveNewTask
+  }
 
 
-// ********************** Create New List **********************
-function saveNewList(event) {
-  const title = document.getElementById('newListTitle').value
+  // ********************** Create New List **********************
+  function saveNewList(event) {
+    const funcDesc = 'save new list'
+    const title = $('#newListTitle').val()
 
-  fetch('/lists/createList', {
-    method: 'POST',
-    body: JSON.stringify({title}),
-    headers: new Headers({
-      'Content-Type': 'application/json'
-    }),
-    credentials: "include"
-  })
-  .then( res => {
-    return res.json()
-  })
-  .then( (response) => {
-    if(response.status === 'success') {
-      $('#lists').append(`<h5><a href="http://localhost:3000/lists/${response.newList.id}" >${title} List</a></h5>`)
-      $('input[name=newListTitle]').val('')
-    } else {
-      console.log("Error Hit!")
-      $('#user-list').append(`<div><p>There has been an ${response.statust}, list has not been created.</p></div>`)
-    }
-  })
-  .catch(error => console.error('Error:', error))
-}
+    fetch('/lists/createList', {
+      method: 'POST',
+      body: JSON.stringify({ title }),
+      headers: jsonHeaders,
+      credentials: 'include'
+    })
+    .then(res => res.json())
+    .then((response) => {
+      if(response.status === 'success') {
+        $('#lists').append(`<h5><a href="http://localhost:3000/lists/${response.newList.id}" >${title} List</a></h5>`)
+        $('input[name=newListTitle]').val('')
+      } else {
+        console.log('Error Hit!', funcDesc)
+        $('#user-list').append(`<div><p>There has been an ${response.status}, list has not been created.</p></div>`)
+      }
+    })
+    .catch(error => console.error(funcDesc, 'Error:', error))
+  }
 
-var listBtn = document.getElementById('addNewList')
-
-if(listBtn){
-	listBtn.onclick = function(){
-		saveNewList(event)
-	}
-  listBtn.addEventListener('click', saveNewList);
-  listBtn.removeEventListener('click', saveNewList)
-}
-
+  if(listBtn){
+    listBtn.onclick = saveNewList
+  }
 
 // ********************** Delete Task **********************
-$(document).ready(function(){
   $(document).on('click', '.deleteTaskBtn', function() {
     var id = $(this).data('id')
 
-    fetch('/deleteTask/' + id, {
+    fetch(`/deleteTask/${id}`, {
       method: 'DELETE',
-      credentials: "include"
+      credentials: 'include'
     })
-    .then( res => {
-      return res.json()
-    })
+    .then( res => res.json() )
     .then( (response) => {
       if(response.status === 'success') {
-        $('.task').filter('[data-id='+id+']').remove()
-        $('.deleteTaskBtn').filter('[data-id='+id+']').remove()
+        const filterString = `[data-id=${id}]`
+        $('.task').filter(filterString).remove()
+        $('.deleteTaskBtn').filter(filterString).remove()
       } else {
-        console.log("Error Hit!")
-        $('#user-list').append(`<div><p>There has been an ${response.statust}, list has not been created.</p></div>`)
+        console.log('Error Hit!')
+        $('#user-list').append(`<div><p>There has been an ${response.status}, list has not been created.</p></div>`)
       }
     })
     .catch(error => console.error('Error:', error))
